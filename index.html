@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מעבדת מעגלים חשמליים</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f4f5f7; color: #222; }
+  header { padding: 10px 16px; background: #1f2937; color: #fff; }
+  header h1 { margin: 0; font-size: 18px; }
+  header small { opacity: .75; }
+  #layout { display: flex; flex-wrap: wrap; gap: 12px; padding: 12px; }
+  #main { flex: 1 1 640px; min-width: 0; }
+  #side { flex: 0 0 320px; display: flex; flex-direction: column; gap: 12px; }
+  .bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; align-items: center; }
+  button { padding: 6px 10px; border: 1px solid #9ca3af; border-radius: 6px; background: #fff; cursor: pointer; font-size: 14px; }
+  button.on { background: #2563eb; color: #fff; border-color: #2563eb; }
+  .card { background: #fff; border: 1px solid #d1d5db; border-radius: 8px; padding: 10px; }
+  .card h3 { margin: 0 0 8px; font-size: 15px; }
+  canvas { background: #fff; border: 1px solid #d1d5db; border-radius: 8px; width: 100%; touch-action: none; display: block; }
+  #scope { height: auto; }
+  label { display: block; margin: 6px 0; font-size: 14px; }
+  input[type=number] { width: 90px; }
+  #status { color: #b91c1c; min-height: 1.2em; font-size: 13px; }
+  .hint { font-size: 13px; color: #555; }
+</style>
+</head>
+<body>
+<header>
+  <h1>מעבדת מעגלים חשמליים</h1>
+  <small>סימולציה חד־ממדית (מעגל מרוכז): חוק זרמים של קירכהוף (שימור מטען), חוק מתחים (חוק פאראדיי), C·dv/dt=i, L·di/dt=v</small>
+</header>
+<div id="layout">
+  <div id="main">
+    <div class="bar" id="tools"></div>
+    <div dir="ltr"><canvas id="board" width="880" height="560"></canvas></div>
+    <p class="hint">בחרו רכיב וגררו על הלוח מנקודה לנקודה. ״בחירה״ מאפשרת לערוך ערכים. מקש Delete מוחק את הרכיב הנבחר.
+      חיבור בין רכיבים = שהקצוות שלהם באותה נקודת רשת (או מחוברים בחוט).</p>
+  </div>
+  <div id="side">
+    <div class="card">
+      <div class="bar">
+        <button id="play">⏸ השהה</button>
+        <button id="reset">↺ איפוס</button>
+        <button id="example">דוגמה: RLC</button>
+        <button id="clear">נקה הכול</button>
+      </div>
+      <label>מהירות סימולציה: <span id="speedTxt"></span>
+        <input type="range" id="speed" min="-5" max="-1" step="0.05" value="-3.2" style="width:100%">
+      </label>
+      <div>זמן סימולציה: <b id="time">0</b></div>
+      <div id="status"></div>
+    </div>
+    <div class="card" id="props"><h3>מאפיינים</h3><div id="propsBody" class="hint">בחרו רכיב.</div></div>
+    <div class="card">
+      <h3>אוסילוסקופ: <span id="scopeName"></span></h3>
+      <canvas id="scope" width="300" height="170"></canvas>
+      <div class="hint"><span style="color:#2563eb">■ מתח על הרכיב</span> &nbsp; <span style="color:#ea580c">■ זרם דרך הרכיב</span></div>
+    </div>
+  </div>
+</div>
+<script src="circuit.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
