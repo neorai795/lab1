@@ -59,6 +59,19 @@
     </div>
   </div>
 </div>
+<section class="card" style="margin:12px">
+  <h3>מדריך: עבודה עם Git ו-GitHub דרך ה-CLI</h3>
+  <ol style="line-height:1.8">
+    <li>בדיקת מצב: <code dir="ltr">git status</code></li>
+    <li>הוספת קבצים: <code dir="ltr">git add .</code></li>
+    <li>שמירת גרסה: <code dir="ltr">git commit -m "message"</code></li>
+    <li>בדיקת הריפו המרוחק: <code dir="ltr">git remote -v</code></li>
+    <li>דחיפה ל-GitHub: <code dir="ltr">git push origin main</code></li>
+    <li>הפעלת GitHub Pages: <code dir="ltr">gh api -X POST repos/OWNER/REPO/pages -f "source[branch]=main" -f "source[path]=/"</code></li>
+    <li>קבלת כתובת האתר בדפדפן: <code dir="ltr">gh api repos/OWNER/REPO/pages --jq .html_url</code></li>
+    <li>כתובת הפרויקט תהיה בצורה: <code dir="ltr">https://OWNER.github.io/REPO/</code></li>
+  </ol>
+</section>
 <script src="circuit.js"></script>
 <script src="app.js"></script>
 </body>
